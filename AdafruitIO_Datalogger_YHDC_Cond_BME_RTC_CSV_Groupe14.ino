@@ -123,8 +123,8 @@ pinMode(A0, INPUT);  //connecter le capteur pour le TP3
 // ========================
 void loop() {
   float adc = analogRead(A0);   //valeur analogique reçue
-  float voltage = adc /1023;
-  Ieff = voltage*15;            //valeur de l'intensité efficace
+  float voltage = adc /1023;    // conversion de bits en volts 
+  Ieff = voltage*15;            //valeur de l'intensité efficace (15 est le coef entre V/I, se situe sur la pince bleue)
 
 //création de la chaine de caractères qui sera écrite dans la carte SD avec: le temps unix, la température, l'humidité, la pression, l'altitude, l'intensité efficace
   DateTime now = rtc.now();
