@@ -3,7 +3,7 @@
 #include <SPI.h>                                        //inclusion lib communication
 #include <SD.h>                                         //inclusion lib carte SD
 
-const int chipSelect = 15;
+const int chipSelect = 14;
 
 RTC_DS3231 rtc;                                        
 
@@ -123,8 +123,8 @@ pinMode(A0, INPUT);  //connecter le capteur pour le TP3
 // ========================
 void loop() {
   float adc = analogRead(A0);   //valeur analogique reçue
-  float voltage = adc /1023;    // conversion de bits en volts 
-  Ieff = voltage*15;            //valeur de l'intensité efficace (15 est le coef entre V/I, se situe sur la pince bleue)
+  float voltage = adc /1023;
+  Ieff = voltage*20;            //valeur de l'intensité efficace
 
 //création de la chaine de caractères qui sera écrite dans la carte SD avec: le temps unix, la température, l'humidité, la pression, l'altitude, l'intensité efficace
   DateTime now = rtc.now();
@@ -162,6 +162,7 @@ void loop() {
       Serial.println("error opening datalog.txt");
     }
     //END OF WRITING
+
     delai2 = millis();
   }  
 
